@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-const secretKey = process.env.SECRETKEY || "skdevelopers"
+
 const generateWebToken = (userId,res) => {
-    const token = jwt.sign({ userId }, secretKey, { expiresIn: "5d" }); // Token will expire in 1 hour
+    const token = jwt.sign({ userId }, process.env.SECRETKEY, { expiresIn: "5d" }); // Token will expire in 1 hour
     res.cookie("token",token,{
         httpOnly:true, //xss attack se bachayega
         secure:true,
